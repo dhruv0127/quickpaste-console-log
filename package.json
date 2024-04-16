@@ -1,0 +1,53 @@
+{
+  "name": "quickpaste-console-log",
+  "displayName": "QuickPaste Console.log",
+  "publisher": "DhruvParekh",
+  "description": "Insert console.log statements for selected text in your code instantly with a single keyboard shortcut. Default shortcut: Ctrl+Shift+Alt+A. You can customize this shortcut by searching for 'QuickPaste Console.log' in the Keyboard Shortcuts editor.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Snippets"
+  ],
+  "activationEvents": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.addConsoleLog",
+        "title": "QuickPaste Console.log"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.addConsoleLog",
+        "key": "ctrl+shift+alt+a",
+        "mac": "cmd+shift+alt+a",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.62.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^4.5.5",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9"
+  },
+  "license": "MIT"
+}
