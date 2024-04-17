@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
 
-
-
 export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('extension.addConsoleLog', () => {
         const editor = vscode.window.activeTextEditor;
@@ -21,6 +19,14 @@ export function activate(context: vscode.ExtensionContext) {
                 const logStatement = `${newLine}${leadingWhitespace}console.log(${selectedText});`;
                 editor.edit((editBuilder) => {
                     editBuilder.insert(selectedLineEnd, logStatement);
+                });
+
+                // Show notification
+                vscode.window.withProgress({
+                    location: vscode.ProgressLocation.Notification,
+                    title: 'QuickPaste Extension'
+                }, async (progress) => {
+                    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds
                 });
             } else {
                 vscode.window.showInformationMessage('No text selected.');
