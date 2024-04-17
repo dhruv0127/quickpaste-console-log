@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
                 // If not, add a newline character before the console.log statement
                 const newLine = selectedLineEndsWithNewline ? '' : '\n';
 
-                const logStatement = `${newLine}${leadingWhitespace}console.log("${selectedText} ===> " , ${selectedText}); //quickpaste extension`;
+                const logStatement = `${newLine}${leadingWhitespace}console.log(${selectedText}); //quickpaste extension`;
                 editor.edit((editBuilder) => {
                     editBuilder.insert(selectedLineEnd, logStatement);
                 });
